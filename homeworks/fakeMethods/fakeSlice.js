@@ -2,35 +2,29 @@ const animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 
 function fakeSlice(array, start, end){
     let animal = [] 
-    if (start >= 0){ 
-        if (end < 0 ){
-            for(let i = 0; start < array.length + end; i++){
-            animal[i] = array[start]
-            start++
-            }
-            return animal
-        }
-        for(let i = 0; start<end ? end:array.length; i++){
-            animal[i] = array[start]
-            start++
-        }
+    if(start<0){
+        start =start+animals.length
+    }
+    if(start < -array.length){
+        start = 0
+    }
+    if(start >= array.length || end < start){
         return animal
-        }else if(start < 0){
-            start = start + array.length 
-            if (end <0 ){
-                for(let i = 0; start< array.length + end; i++){
-                animal[i] = array[start]
-                start++
-                }
-
-            for(let i = 0; start < array.length; i++){
-                animal[i] = array[start]
-                start++
-                }  
-                return animal
-        }
+    }
+    if(end<0){
+        end = end+array.length
+    }
+    if(end< -array.length){
+        return animal
+    }
+    if(end>=array.length || end === undefined){
+        end = array.length-1
+    }
+    for(let i = 0; start<= end; start++){
+        animal[i] = array[start]
+        i++
     }
     return animal
 }
 // console.log(animals.slice(-3,-1))
-fakeSlice(animals, 2)
+console.log(fakeSlice(animals, 2, ))
