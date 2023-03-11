@@ -3,7 +3,7 @@ const animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 function fakeSlice(array, start, end){
     let animal = [] 
     if(start<0){
-        start =start+animals.length
+        start =start+array.length
     }
     if(start < -array.length){
         start = 0
