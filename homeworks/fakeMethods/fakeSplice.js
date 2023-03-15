@@ -10,17 +10,57 @@ function fakeSplice(array, start, deleteCount, ...argument){
     if(start >= array.length ){
         return array.push(argument)
     }
-    if(deleteCount<0 ||deleteCount === 0){
+    if(deleteCount<0 || deleteCount === 0){
         deleteCount = 0
     }
-    if(deleteCount>=array.length    ){
-        deleteCount = array.length-1
-    }
-    let length = array.length
-    while(start<length){
-        array[length-1 + argument.length]=array.length
-    }
-    return animal
+   
+
+    // let arrLength = array.length -1
+    // let argLength = argument.length-1
+    // let length = array.length + argLength-deleteCount
+    // let end = start+deleteCount
+    // while(length>=0){
+    //     if(length === end){
+    //         while(argLength>=0){
+    //             array[length]=argument[argLength]
+    //             length--
+    //             argLength--
+    //         }
+    //         } 
+    //             if(length>=end){
+    //                 array[length]=array[arrLength]
+    //                 arrLength--
+    //             } 
+    //             if(length<=start){
+    //             array[length]=array[arrLength]
+    //             arrLength--
+    //             }
+        
+    //     length--
+    // }
+    // return animals
+    const argLength = argument.length
+    let oldArray = [...array]
+    let length=oldArray.length+argLength-deleteCount
+    let end = start + argLength-1
+    array.length=0
+
+   
+    for(let i = 0; i<length; i++){
+        
+        if(i < start){
+        array[i] = oldArray.shift()
+        }
+        if(i >= start && i <= end){
+        array[i] = argument.shift()
+        } 
+        if(i > end){
+        let newArray= oldArray.slice(deleteCount)
+        array = [...array, ...newArray]
+        break
+        }
+    
+    } 
+    return array
 }
-// console.log(animals.slice(-3,-1))
-console.log(fakeSlice(animals, 2, ))
+console.log(fakeSplice(animals, -1,2, "add","bbbb","cccc","dddd"))
