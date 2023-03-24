@@ -24,7 +24,7 @@ function dayOfYear(data) {
       daysOfMonth = 30;
     }
     if (i === 2) {
-      daysOfMonth = 2020 % 4 ? 28 : 29;
+      daysOfMonth = year % 4 ? 28 : 29;
     }
     day += daysOfMonth;
   }
